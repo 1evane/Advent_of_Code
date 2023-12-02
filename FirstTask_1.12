@@ -1,0 +1,24 @@
+def extract_calibration_values_from_file(file_path):
+    total_sum = 0
+    with open(file_path, 'r') as file:
+        for line in file:
+            # Remove any non-digit characters from the line
+            digits = ''.join(filter(str.isdigit, line))
+
+            # Extract the first and last digits
+            first_digit = int(digits[0])
+            last_digit = int(digits[-1])
+
+            # Combine them to form a two-digit number
+            calibration_value = first_digit * 10 + last_digit
+
+            # Add to the total sum
+            total_sum += calibration_value
+
+    return total_sum
+
+
+if __name__ == "__main__":
+    file_path = "YourPath.txt"  # Update with your actual file path
+    result = extract_calibration_values_from_file(file_path)
+    print(f"Total calibration value: {result}")
